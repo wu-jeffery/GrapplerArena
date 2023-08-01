@@ -7,6 +7,7 @@ public class CameraFOV : MonoBehaviour
 
     [SerializeField] public float mouseSensitivity;
     public Transform playerBody;
+    public Transform orientation;
 
     float xRotation = 0f;
     float yRotation = 0f;
@@ -29,8 +30,8 @@ public class CameraFOV : MonoBehaviour
 
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f); //update rotation up and down
-
+        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f); //update rotation up and down
+        orientation.rotation = Quaternion.Euler(0,yRotation,0f ); //update rotate camera around y axis
         playerBody.Rotate(new Vector3(0, 1, 0) * mouseX); //rotation around  y-axis 
     }
 }
